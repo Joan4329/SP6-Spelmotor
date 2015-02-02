@@ -13,7 +13,7 @@ public class GameWorld {
 		drawableObjects.add(o);
 	}
 	public void addObject(DUGameObject o){
-		// Does this work or does DUGameObjects call UGameObject's function?
+		// Does this work or does DUGameObjects call DGameObject's function?
 		updateableObjects.add(o);
 		drawableObjects.add(o);
 	}
@@ -26,7 +26,7 @@ public class GameWorld {
 		updateableObjects.remove(o);
 	}
 	public void deleteObject(DUGameObject o){
-		// Does this work or does DUGameObjects call UGameObject's function?
+		// Does this work or does DUGameObjects call DGameObject's function?
 		updateableObjects.remove(o);
 	}
 	

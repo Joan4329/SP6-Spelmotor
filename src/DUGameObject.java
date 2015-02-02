@@ -1,8 +1,8 @@
 
 public abstract class DUGameObject extends DGameObject implements Updateable {
 	
-	private int drawOrder;
-	// private ImageFile image;
+	// attributes inherited from DGameObject
+	
 	
 	public DUGameObject(int x, int y, int drawOrder){
 		super(x, y, drawOrder);
@@ -10,7 +10,9 @@ public abstract class DUGameObject extends DGameObject implements Updateable {
 		// Possibly do some more stuff that UGameObject does...
 	}
 	
-	
+	public void update(){
+		
+	}
 	
 	
 	
