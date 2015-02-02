@@ -1,14 +1,18 @@
+import java.awt.Image;
+import java.awt.Toolkit;
 
 public abstract class DGameObject extends GameObject implements Drawable {
 	
 	private int drawOrder;
-	// private ImageFile image;
+	private Image image;
 	
-	public DGameObject(int x, int y, int drawOrder){
+	public DGameObject(int x, int y, int drawOrder, String imageFile){
 		super(x, y);
 		if (drawOrder < 0)
 			throw new IllegalArgumentException("drawOrder can't be negative.");
 		this.drawOrder = drawOrder;
+		
+		image = Toolkit.getDefaultToolkit().getImage(imageFile);
 		// Take image as argument too
 	}
 	
