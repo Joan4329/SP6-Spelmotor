@@ -26,7 +26,6 @@ public class GameLoop extends JFrame{
 		while(isRunning){
 			long time = System.currentTimeMillis();
 			
-			//input();
 			update();
 			render();
 			
