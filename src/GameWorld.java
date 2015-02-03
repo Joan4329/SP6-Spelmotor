@@ -2,9 +2,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class GameWorld {
-	// Static lists?
-	private List<Updateable> updateableObjects = new LinkedList<Updateable>();
-	private List<Drawable> drawableObjects  = new LinkedList<Drawable>();
+	private List<GameObject> updateableObjects = new LinkedList<GameObject>();
+	private List<GameObject> drawableObjects  = new LinkedList<GameObject>();
 	
 	public void addObject(UGameObject o){
 		updateableObjects.add(o);
@@ -31,12 +30,12 @@ public class GameWorld {
 		drawableObjects.remove(o);
 	}
 	
-	public List<Updateable> getUpdateableObjects(){
+	public List<GameObject> getUpdateableObjects(){
 		// Return copy of list to protect list from changes
 		return updateableObjects;
 	}
 	
-	public List<Drawable> getDrawableObjects(){
+	public List<GameObject> getDrawableObjects(){
 		// Return copy of list to protect list from changes
 		return drawableObjects;
 	}
