@@ -33,13 +33,11 @@ public class GameWorld {
 	
 	public List<GameObject> getUpdateableObjects(){
 		// Return copy of list to protect list from changes
-		List<GameObject> temp = updateableObjects;
-		return temp;
+		return updateableObjects;
 	}
 	
 	public List<GameObject> getDrawableObjects(){
 		// Return copy of list to protect list from changes
-		List<GameObject> temp = drawableObjects;
-		return temp;
+		return drawableObjects;
 	}
 }
