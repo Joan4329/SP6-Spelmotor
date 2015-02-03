@@ -17,5 +17,12 @@ public class AnimData {
 	public AnimFrameData[] getAnims(){
 		return anims;
 	}
+	
+	public Image getImage(int index){
+		return images[index];
+	}
+	public AnimFrameData getAnim(int index){
+		return anims[index];
+	}
 
 }

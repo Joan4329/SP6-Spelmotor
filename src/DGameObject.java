@@ -24,4 +24,11 @@ public abstract class DGameObject extends GameObject implements Drawable {
 	public int getDrawOrder(){
 		return drawOrder;
 	}
+	
+	public Image getImage(){
+		return image;
+	}
+	public void setImage(Image newImage){
+		image = newImage;
+	}
 }
