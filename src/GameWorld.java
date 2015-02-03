@@ -28,6 +28,7 @@ public class GameWorld {
 	public void deleteObject(DUGameObject o){
 		// Does this work or does DUGameObjects call DGameObject's function?
 		updateableObjects.remove(o);
+		drawableObjects.remove(o);
 	}
 	
 	public List<GameObject> getUpdateableObjects(){
