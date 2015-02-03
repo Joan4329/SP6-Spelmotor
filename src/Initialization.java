@@ -12,11 +12,11 @@ public class Initialization {
 		GameLoop loop = new GameLoop(fps, renderer);
 		
 		// Test, not final
-		DGameObject o1 = new Sprite(15, 15, 0,"");
-		DGameObject o2 = new Sprite(57, 26, 0,"");
-		DGameObject o3 = new Sprite(155, 155, 0,"");
-		DGameObject o4 = new Sprite(1005, 235, 0,"");
-		DGameObject o5 = new Sprite(256, 600, 0,"");
+		DGameObject o1 = new Sprite(15, 15, 0,"test.png");
+		DGameObject o2 = new Sprite(57, 26, 0,"test.png");
+		DGameObject o3 = new Sprite(155, 155, 0,"test.png");
+		DGameObject o4 = new Sprite(1005, 235, 0,"test.png");
+		DGameObject o5 = new Sprite(256, 600, 0,"test.png");
 		
 		world.addObject(o1);
 		world.addObject(o2);

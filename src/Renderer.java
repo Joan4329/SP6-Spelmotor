@@ -1,8 +1,8 @@
 import java.awt.*;
-import java.awt.image.BufferedImage;
+import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
-
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 
@@ -12,9 +12,13 @@ public class Renderer extends JFrame{
 	private int windowHeight;
 	
 	private Insets insets;
-	private BufferedImage backBuffer;
+	private Image backBuffer;
+	private Graphics bbg;
+	private Graphics g;
 	
-	private List<GameObject> objects = new LinkedList<GameObject>();
+	Image image;
+	
+	private List<Drawable> objects = new LinkedList<Drawable>();
 	GameWorld world;
 	
 	public Renderer(int width, int height, GameWorld gameWorld){
@@ -37,15 +41,16 @@ public class Renderer extends JFrame{
 		int widthInset = insets.left + insets.right;
 		int heightInset = insets.top + insets.bottom;
 		setSize(windowWidth + widthInset, windowHeight + heightInset);
-		backBuffer = new BufferedImage(windowWidth, windowHeight, BufferedImage.TYPE_INT_RGB);
+		//backBuffer = new BufferedImage(windowWidth, windowHeight, BufferedImage.TYPE_INT_RGB);
+		backBuffer = createImage(windowWidth, windowHeight);
 	}
 	
 	public void draw(){
 		
-		Graphics g = getGraphics();
+		g = getGraphics();
 		
 		// Creates a backbuffer to draw to.
-		Graphics bbg = backBuffer.getGraphics();
+		bbg = backBuffer.getGraphics();
 		
 		// Draws to backbuffer.
 		bbg.setColor(Color.WHITE);
@@ -55,12 +60,11 @@ public class Renderer extends JFrame{
 		bbg.fillRect(0, 0, 10, 10);
 		bbg.fillRect(10, 10, 10, 10);
 		
-		objects = world.getDrawableObjects();
+		URL path = getClass().getResource("images/test.png");
+		ImageIcon img = new ImageIcon(path);
+		image = img.getImage();
 		
-		for(GameObject o : objects){
-			bbg.setColor(Color.BLACK);
-			bbg.fillRect(o.getX(), o.getY(), 10, 10);
-		}
+	    bbg.drawImage(image, 100, 100, null);
 		
 		// Draws backbuffer to screen.
 		g.drawImage(backBuffer, insets.left, insets.top, this);

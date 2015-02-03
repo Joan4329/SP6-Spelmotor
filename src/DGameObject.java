@@ -12,7 +12,7 @@ public abstract class DGameObject extends GameObject implements Drawable {
 			throw new IllegalArgumentException("drawOrder can't be negative.");
 		this.drawOrder = drawOrder;
 		
-		image = Toolkit.getDefaultToolkit().getImage(imageFile);
+		image = Toolkit.getDefaultToolkit().getImage("..//images//" + imageFile);
 		// Take image as argument too
 	}
 	
