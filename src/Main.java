@@ -2,8 +2,9 @@
 public class Main {
 
 	public static void main(String[] args) {
-		GameLoop game = new GameLoop();
-		game.run();
+		Initialization init = new Initialization();
+		init.init();
+		
 		System.exit(0);
 	}
 
