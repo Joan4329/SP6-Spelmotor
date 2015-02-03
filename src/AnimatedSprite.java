@@ -29,7 +29,9 @@ public class AnimatedSprite extends Sprite {
 		setImage(animData.getImage(animData.getAnim(activeAnimNum).getStartFrame()));
 	}
 	
-public void updateAnim(double dTime){
+	// Create an overloaded method of changeAnim or updateAnim that takes int FPS as argument? 
+	
+	public void updateAnim(double dTime){
 		frameTime += dTime;
 		// Check if enough time has passed and then change animation's current frame number
 		if (frameTime > (1/animFPS)){
@@ -48,5 +50,30 @@ public void updateAnim(double dTime){
 			frameTime = frameTime % (1/animFPS);
 		}
 			
+	}
+	
+	public AnimData getAnimData(){
+		return animData;
+	}
+	public void setAnimData(AnimData ad){
+		// This method can be used to change the appearance, but not behaviour, of an animated object. i.e. If a flag turns into a tree. 
+		animData = ad;
+	}
+	// No set-methods for these because changeAnim is meant to be used to change activeAnimNum. activeFrameNum doesn't need to be changed anywhere else.
+	// Might need those set-methods anyway but set to protected or something so that classes that inherits them can override methods and use these attributes.
+	public int getActiveAnimNum(){
+		return activeAnimNum;
+	}
+	public int getActiveFrameNum(){
+		return activeFrameNum;
+	}
+//	public double getFrameTime(){
+//		return frameTime;
+//	}
+	public double getAnimFPS(){
+		return animFPS;	
+	}
+	public void setAnimFPS(double fps){
+		animFPS = fps;
 	}
 }
