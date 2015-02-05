@@ -2,7 +2,7 @@ public class PhysicsEngine {
 
 	// Collision detections
 	// Sphere vs Sphere
-	public static boolean checkSphereCollision(BoundingCircle a, BoundingCircle b){
+	public static boolean checkCircleCollision(BoundingCircle a, BoundingCircle b){
 		
 		Vector centerVector = Vector.subtrVectors(b.getVector(), a.getVector());
 		double distanceSquared = Vector.dotProduct(centerVector, centerVector);
