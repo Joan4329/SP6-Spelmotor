@@ -16,15 +16,14 @@ public class Renderer extends JFrame{
 	private Graphics bbg;
 	private Graphics g;
 	
+	private Vector camera;
+	
 	Image image;
 	
-	private List<Drawable> objects = new LinkedList<Drawable>();
-	GameWorld world;
-	
-	public Renderer(int width, int height, GameWorld gameWorld){
+	public Renderer(int width, int height, Vector camera){
 		windowWidth = width;
 		windowHeight = height;
-		world = gameWorld;
+		this.camera = camera;
 		
 		init();
 	}
@@ -43,30 +42,30 @@ public class Renderer extends JFrame{
 		setSize(windowWidth + widthInset, windowHeight + heightInset);
 		//backBuffer = new BufferedImage(windowWidth, windowHeight, BufferedImage.TYPE_INT_RGB);
 		backBuffer = createImage(windowWidth, windowHeight);
+		bbg = backBuffer.getGraphics();
+	}
+	
+	public void drawObject(double x, double y, String image){
+		URL path = getClass().getResource(image);
+		ImageIcon img = new ImageIcon(path);
+		this.image = img.getImage();
+		
+		// Draw object offset by the cameras position.
+		// Maybe change to closest integer instead of just cutting?
+		bbg.drawImage(this.image, ((int)x - (int)camera.getX()), ((int)y - (int)camera.getY()), null);
 	}
 	
 	public void draw(){
-		
 		g = getGraphics();
-		
-		// Creates a backbuffer to draw to.
-		bbg = backBuffer.getGraphics();
-		
-		// Draws to backbuffer.
-		bbg.setColor(Color.WHITE);
-		bbg.fillRect(0, 0, 1000, 1000);
-		
-		bbg.setColor(Color.RED);
-		bbg.fillRect(0, 0, 10, 10);
-		bbg.fillRect(10, 10, 10, 10);
-		
-		URL path = getClass().getResource("images/test.png");
-		ImageIcon img = new ImageIcon(path);
-		image = img.getImage();
-		
-	    bbg.drawImage(image, 100, 100, null);
-		
 		// Draws backbuffer to screen.
 		g.drawImage(backBuffer, insets.left, insets.top, this);
+	}
+	
+	public Vector getCamera(){
+		return camera;
+	}
+	
+	public void setCamera(Vector xy){
+		camera = xy;
 	}
 }

@@ -1,21 +1,15 @@
 
 public abstract class GameObject {
-	private int x, y;
-	public GameObject(int x, int y){
-		this.x = x;
-		this.y = y;
+	private Vector coordinates;
+	public GameObject(Vector coords){
+		coordinates = coords;
 	}
 	
-	public int getX(){
-		return x;
+	public Vector getCoordinates(){
+		return coordinates;
 	}
-	public void setX(int x){
-		this.x = x;
-	}
-	public int getY(){
-		return y;
-	}
-	public void setY(int y){
-		this.y = y;
+
+	public void setCoordinates(Vector coords){
+		coordinates = coords;
 	}
 }

@@ -1,4 +1,5 @@
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 public class GameLoop{
 	
@@ -12,9 +13,12 @@ public class GameLoop{
 	
 	Renderer renderer;
 	
-	public GameLoop(int fps, Renderer renderer){
+	GameWorld world;
+	
+	public GameLoop(int fps, Renderer renderer, GameWorld world){
 		this.fps = fps;
 		this.renderer = renderer;
+		this.world = world;
 	}
 	
 	public void run(){
@@ -25,6 +29,12 @@ public class GameLoop{
 			long time = System.currentTimeMillis();
 			
 			update();
+			
+			List<DGameObject> drawableObjects = world.getDrawableObjects();
+			for (DGameObject o : drawableObjects){
+				o.draw();
+			}
+			
 			renderer.draw();
 			
 			time = (1000 / fps) - (System.currentTimeMillis() - time);
