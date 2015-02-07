@@ -7,10 +7,4 @@ public class Sprite extends DUGameObject {
 		super(coords, drawOrder, imageFile, renderer, rotation, velocity);
 	}
 	
-	// This method was somehow needed otherwise Sprite complains that it doesn't have the methods of Updateable...
-	@Override
-	public void setVelocity(Vector v) {
-		// TODO Auto-generated method stub
-		
-	}
 }
