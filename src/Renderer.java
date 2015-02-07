@@ -1,8 +1,11 @@
 import java.awt.*;
-import java.net.URL;
-import java.util.LinkedList;
-import java.util.List;
-import javax.swing.ImageIcon;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
 
@@ -13,8 +16,8 @@ public class Renderer extends JFrame{
 	
 	private Insets insets;
 	private Image backBuffer;
-	private Graphics bbg;
-	private Graphics g;
+	private Graphics2D bbg;
+	private Graphics2D g;
 	
 	private Vector camera;
 	
@@ -42,21 +45,34 @@ public class Renderer extends JFrame{
 		setSize(windowWidth + widthInset, windowHeight + heightInset);
 		//backBuffer = new BufferedImage(windowWidth, windowHeight, BufferedImage.TYPE_INT_RGB);
 		backBuffer = createImage(windowWidth, windowHeight);
-		bbg = backBuffer.getGraphics();
+		bbg = (Graphics2D)backBuffer.getGraphics();
 	}
 	
-	public void drawObject(double x, double y, String image){
-		URL path = getClass().getResource(image);
-		ImageIcon img = new ImageIcon(path);
-		this.image = img.getImage();
-		
-		// Draw object offset by the cameras position.
-		// Maybe change to closest integer instead of just cutting?
-		bbg.drawImage(this.image, ((int)x - (int)camera.getX()), ((int)y - (int)camera.getY()), null);
+	public void drawObject(double x, double y, String image, double rotation){
+			
+		try {
+			// Reads image file
+			BufferedImage bi = ImageIO.read(new File(getClass().getResource(image).toURI()));
+			
+			// Rotates image and offsets it with the cameras position
+			AffineTransform at = new AffineTransform();
+			
+            at.translate(x - camera.getX(), y - camera.getY());
+            at.rotate(Math.toRadians(rotation));
+            at.translate(-bi.getWidth()/2, -bi.getHeight()/2);
+            
+            // Draws image to backbuffer 
+            bbg.drawImage(bi, at, null);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void draw(){
-		g = getGraphics();
+		g = (Graphics2D)getGraphics();
 		// Draws backbuffer to screen.
 		g.drawImage(backBuffer, insets.left, insets.top, this);
 	}
@@ -68,4 +84,5 @@ public class Renderer extends JFrame{
 	public void setCamera(Vector xy){
 		camera = xy;
 	}
+	
 }

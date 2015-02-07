@@ -3,7 +3,7 @@ import java.util.List;
 
 public class GameWorld {
 	private List<GameObject> updateableObjects = new LinkedList<GameObject>();
-	private List<GameObject> drawableObjects  = new LinkedList<GameObject>();
+	private List<DGameObject> drawableObjects  = new LinkedList<DGameObject>();
 	
 	public void addObject(UGameObject o){
 		updateableObjects.add(o);
@@ -35,7 +35,7 @@ public class GameWorld {
 		return updateableObjects;
 	}
 	
-	public List<GameObject> getDrawableObjects(){
+	public List<DGameObject> getDrawableObjects(){
 		// Return copy of list to protect list from changes
 		return drawableObjects;
 	}

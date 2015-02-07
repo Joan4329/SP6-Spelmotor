@@ -8,8 +8,8 @@ public class AnimatedSprite extends Sprite {
 	private double animFPS = 24;
 	// Default FPS of animations. Probably change to something else?
 	
-	public AnimatedSprite(Vector coords, int drawOrder, String imageFile){
-		super(coords, drawOrder, imageFile);
+	public AnimatedSprite(Vector coords, int drawOrder, String imageFile, Renderer renderer, double rotation){
+		super(coords, drawOrder, imageFile, renderer, rotation);
 	}
 	
 	public void initialize(AnimData ad, int startingNumber){

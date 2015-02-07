@@ -31,4 +31,9 @@ public class InputManager implements KeyListener{
 		return keys[keyCode];
 	}
 	
+	/*
+	 if(input.keyPressed(KeyEvent.VK_UP))
+			y--;
+	 */
+	
 }

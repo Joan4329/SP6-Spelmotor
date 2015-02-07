@@ -1,4 +1,3 @@
-import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class GameLoop{
@@ -7,12 +6,7 @@ public class GameLoop{
 	private int fps = 60;
 	
 	InputManager input;
-	
-	private int x = 10;
-	private int y = 10;
-	
 	Renderer renderer;
-	
 	GameWorld world;
 	
 	public GameLoop(int fps, Renderer renderer, GameWorld world){
@@ -56,18 +50,7 @@ public class GameLoop{
 	}
 	
 	private void update(){
-		if(input.keyPressed(KeyEvent.VK_UP))
-			y--;
 		
-		if(input.keyPressed(KeyEvent.VK_DOWN))
-			y++;
-		
-		if(input.keyPressed(KeyEvent.VK_LEFT))
-			x--;
-		
-		if(input.keyPressed(KeyEvent.VK_RIGHT))
-			x++;
-			
 	}
 	
 }

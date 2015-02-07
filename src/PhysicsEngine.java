@@ -58,4 +58,19 @@ public class PhysicsEngine {
 		return sqDist;
 	}
 	
+	public static Vector gravity(Vector velocity, double modifier, double terminalVelocity, int fps, double gameTimeFactor){
+		Vector newVelocity = velocity;
+		double newX;
+		
+		newX = ((1 / fps) * modifier) * gameTimeFactor;	
+		
+		if(velocity.getX() + newX < terminalVelocity){
+			newVelocity.setX(velocity.getX() - newX);
+		}else if(velocity.getX() < terminalVelocity) {
+			newVelocity.setX(terminalVelocity);
+		}
+		
+		return newVelocity;
+	}
+	
 }
