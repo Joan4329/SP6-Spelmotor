@@ -25,6 +25,10 @@ public class Vector {
 		return a.x * b.x + a.y * b.y;
 	}
 	
+	public static Vector scalarMulti(int a, Vector b){
+		return new Vector(a * b.x, a * b.y);
+	}
+	
 	public double getX(){
 		return x;
 	}
