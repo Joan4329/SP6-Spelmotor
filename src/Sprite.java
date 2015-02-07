@@ -6,4 +6,14 @@ public class Sprite extends DUGameObject {
 	public Sprite(Vector coords, int drawOrder, String imageFile){
 		super(coords, drawOrder, imageFile);
 	}
+	public Sprite(Vector coords, int drawOrder, String imageFile, Vector velocity){
+		super(coords, drawOrder, imageFile);
+	}
+	
+	// This method was somehow needed otherwise Sprite complains that it doesn't have the methods of Updateable...
+	@Override
+	public void setVelocity(Vector v) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -2,18 +2,29 @@
 public abstract class DUGameObject extends DGameObject implements Updateable {
 	
 	// attributes inherited from DGameObject
-	
+	// Since no inheritence (multiple inheritence) is possible from UGameObject this class needs to have its own velocity attribute.
+	private Vector velocity;
 	
 	public DUGameObject(Vector coords, int drawOrder, String imageFile){
 		super(coords, drawOrder, imageFile);
 		
 		// Possibly do some more stuff that UGameObject does...
 	}
-	
-	public void update(){
-		
+	public DUGameObject(Vector coords, int drawOrder, String imageFile, Vector velocity){
+		super(coords, drawOrder, imageFile);
+		this.velocity = velocity;
 	}
 	
+	// Same as above, these are needed because this class doesn't inherit from UGameObject
+	public void update(long time){
+		super.setCoordinates(Vector.addVectors(super.getCoordinates(), Vector.scalarMulti((int)time, velocity)));
+	}
+	public Vector getVelocity(){
+		return velocity;
+	}
+	public void setVelocity(Vector v){
+		velocity = v;
+	}
 	
 	
 	
