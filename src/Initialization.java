@@ -10,7 +10,8 @@ public class Initialization {
 		GameWorld world = new GameWorld();
 		Vector camera = new Vector(0, 0);
 		Renderer renderer = new Renderer(windowWidth, windowHeight, camera);
-		GameLoop loop = new GameLoop(fps, renderer, world);
+		GameLogic logic = new GameLogic();
+		GameLoop loop = new GameLoop(fps, renderer, world, logic);
 		
 		Sprite o = new Sprite(new Vector(30, 30), 0, "/images/test.png", renderer, 0, new Vector(0, 0));
 		world.addObject(o);

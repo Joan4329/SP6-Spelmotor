@@ -8,11 +8,13 @@ public class GameLoop{
 	InputManager input;
 	Renderer renderer;
 	GameWorld world;
+	GameLogic logic;
 	
-	public GameLoop(int fps, Renderer renderer, GameWorld world){
+	public GameLoop(int fps, Renderer renderer, GameWorld world, GameLogic logic){
 		this.fps = fps;
 		this.renderer = renderer;
 		this.world = world;
+		this.logic = logic;
 	}
 	
 	public void run(){
@@ -22,13 +24,16 @@ public class GameLoop{
 		while(isRunning){
 			long time = System.currentTimeMillis();
 			
-			update();
+			// Update game.
+			logic.update();
 			
+			// Draw objects.
 			List<DGameObject> drawableObjects = world.getDrawableObjects();
 			for (DGameObject o : drawableObjects){
 				o.draw();
 			}
 			
+			// Output image.
 			renderer.draw();
 			
 			time = (1000 / fps) - (System.currentTimeMillis() - time);
@@ -49,8 +54,5 @@ public class GameLoop{
 		input = new InputManager(renderer);
 	}
 	
-	private void update(){
-		
-	}
 	
 }
