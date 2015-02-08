@@ -18,7 +18,7 @@ public class GameLoop{
 	}
 	
 	public void run(){
-		
+
 		init();
 		
 		while(isRunning){

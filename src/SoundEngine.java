@@ -5,14 +5,17 @@ import javax.sound.sampled.*;
 
 public class SoundEngine {
 
+	private static Clip soundClip;
+	
 	public static void playSound(URL soundFilePath){
 		try{
 			
 			AudioInputStream auI = AudioSystem.getAudioInputStream(soundFilePath);
-			Clip soundClip = AudioSystem.getClip();
+			soundClip = AudioSystem.getClip();
 			soundClip.open(auI);
 			
-			if (!soundClip.isRunning())
+			soundClip.setFramePosition(0);
+			if (!soundClip.isActive())
 				soundClip.start();
 			
 		} catch (IOException e){
