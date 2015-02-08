@@ -71,7 +71,22 @@ public class Renderer extends JFrame{
 		}
 	}
 	
+	public void drawObjectImage(double x, double y, BufferedImage image, double rotation){
+		BufferedImage bi = image;
+		
+		// Rotates image and offsets it with the cameras position
+		AffineTransform at = new AffineTransform();
+		
+		at.translate(x - camera.getX(), y - camera.getY());
+        at.rotate(Math.toRadians(rotation));
+        at.translate(-bi.getWidth()/2, -bi.getHeight()/2);
+        
+        // Draws image to backbuffer 
+        bbg.drawImage(bi, at, null);
+	}
+	
 	public void draw(){
+		// No "clearing" of backbuffer.
 		g = (Graphics2D)getGraphics();
 		// Draws backbuffer to screen.
 		g.drawImage(backBuffer, insets.left, insets.top, this);
