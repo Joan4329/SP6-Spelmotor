@@ -7,6 +7,10 @@ public class SoundCue {
 //	int priority
 	private String[] soundSources;
 	
+	public SoundCue(String[] soundSources){
+		this.soundSources = soundSources;
+	}
+	
 	public void playSound(){
 		Random rand = new Random();
 		URL path = getClass().getClassLoader().getResource(soundSources[rand.nextInt(soundSources.length)]);
