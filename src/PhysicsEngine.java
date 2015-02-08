@@ -85,7 +85,7 @@ public class PhysicsEngine {
 	public static Vector moveOutOfCollision(AABB a, AABB b, Vector v){
 		// Moves AABB a out of AABB b depending on Vector v (Velocity of a).
 		
-		Vector newVector = new Vector(0, 0);
+		Vector newVector = new Vector();
 		double xDif = 0;
 		double yDif = 0;
 		double ratio = Math.abs(v.getX() / v.getY());
@@ -130,6 +130,15 @@ public class PhysicsEngine {
 		}
 		
 		return newVector;
+	}
+	
+	public static Vector movement(Vector position, Vector velocity){
+		Vector newPosition = new Vector();
+		
+		newPosition.setX(position.getX() + velocity.getX());
+		newPosition.setY(position.getY() + velocity.getY());
+		
+		return newPosition;
 	}
 	
 }

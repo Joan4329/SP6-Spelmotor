@@ -8,7 +8,6 @@ import java.net.URISyntaxException;
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 
-
 public class Renderer extends JFrame{
 	
 	private int windowWidth;
